@@ -1,6 +1,7 @@
 package com.study.todolist
 
 import android.content.DialogInterface
+import android.os.Build.VERSION_CODES.P
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -51,10 +52,12 @@ class MainActivity : AppCompatActivity() {
             //어댑터에 데이터 전달
             for (todoItem in listTodo) {
                 todoAdapter.addListItem(todoItem)
+                Log.d("todoAdapter", "${todoAdapter}")
             }
             //ui thread에서 처리
             runOnUiThread {
                 todoAdapter.notifyDataSetChanged()
+                Log.d("DataSetChanged", "${todoAdapter.itemCount}")
             }
         }
 
